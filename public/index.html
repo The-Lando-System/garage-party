@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <base href="/">
+
+  <title>Time to Party...</title>
+
+  <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="libs/animate.css/animate.css">
+
+  <link rel="stylesheet" href="libs/material-design-lite/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-blue.min.css" />
+
+  <link rel="stylesheet" href="assets/css/app.css">
+
+  <script src="libs/jquery/dist/jquery.js"></script>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-cookies/angular-cookies.js"></script>
+  <script src="libs/angular-jwt/dist/angular-jwt.js"></script>
+  <script src="libs/angular-route/angular-route.js"></script>
+  <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="libs/angular-animate/angular-animate.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+
+  <script src="libs/material-design-lite/material.min.js"></script>
+
+  <script src="app/my-app.module.js"></script>
+  <script src="app/my-app.config.js"></script>
+  <script src="app/services/auth.service.js"></script>
+  <script src="app/services/interceptor.service.js"></script>
+  <script src="app/factories/admin.factory.js"></script>
+  <script src="app/directives/jumbotron/jumbotron.directive.js"></script>
+  <script src="app/directives/confirm-dialog/confirm-dialog.directive.js"></script>
+  <script src="app/directives/messages/notification.directive.js"></script>
+
+  <script src="app/layout/navbar/navbar.directive.js"></script>
+  <script src="app/layout/navbar/navbar.controller.js"></script>
+
+  <script src="app/layout/home/home.controller.js"></script>
+  <script src="app/layout/login/login.controller.js"></script>
+  <script src="app/layout/garage-status/garage-status.controller.js"></script>
+  <script src="app/layout/users/user-management.controller.js"></script>
+  <script src="app/layout/users/user-modal/user-modal.directive.js"></script>
+
+
+</head>
+<body ng-app="my-app">
+  <navbar></navbar>
+  <div ui-view></div>
+</body>
+</html>

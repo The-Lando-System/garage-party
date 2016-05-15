@@ -1,0 +1,23 @@
+{
+  "name": "angular-template",
+  "version": "0.0.1",
+  "description": "Template MEAN Application",
+  "author": "The-Lando-System",
+  "dependencies": {
+    "bower": "latest",
+    "body-parser": "latest",
+    "express": "latest",
+    "method-override": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "serve-favicon": "latest",
+    "jsonwebtoken": "latest",
+    "nodemon":"latest",
+    "password-hash":"latest"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "nodemon ./server/start.js"
+  }
+}

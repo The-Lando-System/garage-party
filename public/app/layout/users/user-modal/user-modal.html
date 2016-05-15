@@ -1,0 +1,139 @@
+<!-- New User Dialog -->
+<form name="newUserForm" ng-submit="vm.createUser()" novalidate>
+  <dialog id="new-user-dialog" class="mdl-dialog">
+    <h3 class="mdl-dialog__title">New User</h3>
+    <div class="mdl-dialog__content">
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input id="new-username-id" type="text" class="mdl-textfield__input" ng-model="vm.newUser.username" required>
+            <label class="mdl-textfield__label" for="new-username-id">Username</label>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input id="new-password-id" type="password" class="mdl-textfield__input" ng-model="vm.newUser.password" required>
+            <label class="mdl-textfield__label" for="new-password-id">Password</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input id="new-firstname-id" type="text" class="mdl-textfield__input" ng-model="vm.newUser.firstName" required>
+            <label class="mdl-textfield__label" for="new-firstname-id">First Name</label>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input id="new-lastname-id" type="text" class="mdl-textfield__input" ng-model="vm.newUser.lastName" required>
+            <label class="mdl-textfield__label" for="new-lastname-id">Last Name</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input id="new-email-id" type="email" class="mdl-textfield__input" ng-model="vm.newUser.email" required>
+            <label class="mdl-textfield__label" for="new-email-id">Email</label>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user-option-id">
+                <input ng-click="vm.newUser.role = 'user';" type="radio" id="user-option-id" class="mdl-radio__button" name="roles" checked>
+                <span class="mdl-radio__label">User</span>
+              </label>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col">
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="admin-option-id">
+                <input ng-click="vm.newUser.role = 'admin';" type="radio" id="admin-option-id" class="mdl-radio__button" name="roles">
+                <span class="mdl-radio__label">Admin</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-disabled="newUserForm.$invalid">
+        Create
+      </button>
+      <button ng-click="vm.hideNewUserModal()" type="button" class="mdl-button">Close</button>
+    </div>
+  </dialog>
+</form>
+
+<!-- Edit User Dialog -->
+<form name="editUserForm" ng-submit="vm.updateUser()" novalidate>
+  <dialog id="edit-user-dialog" class="mdl-dialog">
+    <h3 class="mdl-dialog__title">Editing User: {{vm.editedUser.firstName}}  {{vm.editedUser.lastName}}</h3>
+    <div class="mdl-dialog__content">
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield">
+            <strong>Username</strong>
+            <input id="new-username-id" type="text" class="mdl-textfield__input" ng-model="vm.editedUser.username" required>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield">
+            <strong>Password</strong>
+            <input id="new-password-id" type="password" class="mdl-textfield__input" ng-model="vm.editedUser.password">
+          </div>
+        </div>
+      </div>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield">
+            <strong>First Name</strong>
+            <input id="new-firstname-id" type="text" class="mdl-textfield__input" ng-model="vm.editedUser.firstName" required>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield">
+            <strong>Last Name</strong>
+            <input id="new-lastname-id" type="text" class="mdl-textfield__input" ng-model="vm.editedUser.lastName" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield">
+            <strong>Email</strong>
+            <input id="edit-email-id" type="email" class="mdl-textfield__input" ng-model="vm.editedUser.email" required>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="edit-user-option-id">
+                <input ng-click="vm.editedUser.role = 'user';" type="radio" id="edit-user-option-id" class="mdl-radio__button" name="edit-roles" checked>
+                <span class="mdl-radio__label">User</span>
+              </label>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col">
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="edit-admin-option-id">
+                <input ng-click="vm.editedUser.role = 'admin';" type="radio" id="edit-admin-option-id" class="mdl-radio__button" name="edit-roles">
+                <span class="mdl-radio__label">Admin</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-disabled="editUserForm.$invalid">
+        Update
+      </button>
+      <button ng-click="vm.hideEditUserModal()" type="button" class="mdl-button">Close</button>
+    </div>
+  </dialog>
+</form>

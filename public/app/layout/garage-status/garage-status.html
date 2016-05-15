@@ -1,0 +1,18 @@
+<jumbotron></jumbotron>
+<div class="row">
+  <div class="container">
+    <h2>{{vm.garageStatusMessage}}</h2>
+  </div>
+</div>
+
+<dialog id="confirm-dialog-garage-status" class="mdl-dialog">
+  <h3 class="mdl-dialog__title">You are not logged in!</h3>
+  <div class="mdl-dialog__content">
+    <p>
+      Please login to check the status of your garage door.
+    </p>
+  </div>
+  <div class="mdl-dialog__actions">
+    <button ng-click="vm.navigateToLogin();" type="button" class="mdl-button">Okay Fine...</button>
+  </div>
+</dialog>

@@ -1,0 +1,70 @@
+.row {
+  margin-top: 10px;
+}
+
+.jumbotron {
+  /* background-color: #595959; */
+  background-color: rgb(96,125,139);
+  color: white;
+  margin-top: 20px;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #cccccc;
+}
+
+.navbar-inverse .navbar-text {
+  color: #cccccc;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #cccccc;
+}
+
+.user-welcome {
+  font-weight: bold;
+  color: white;
+}
+
+.login-input {
+	margin-bottom: 10px;
+}
+
+.user-select:hover {
+	cursor: pointer;
+	color: #336699;
+}
+
+.user-delete-icon:hover {
+	cursor: pointer;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.user-table {
+  max-width: 300px;
+  margin-bottom: 100px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.right-align {
+  float: right;
+}
+
+.mdl-card__title {
+  background-color: rgb(96,125,139);
+  color: white;
+}
+
+#new-user-dialog {
+  width: 600px;
+}
+
+#edit-user-dialog {
+  width: 600px;
+}
