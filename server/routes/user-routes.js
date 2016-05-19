@@ -26,13 +26,22 @@ module.exports = function(app) {
 	});
 
 	// User routes ==================================
-	userRoutes.get('/hello/:username', function(req,res){
-		var hello = {
-			name: "HelloMessage",
-			description: "This message says hello",
-			message: "Hello " + req.params.username
-		};
-		res.json(hello);
+	userRoutes.get('/garage/status/:username', function(req,res){
+		var user = req.decoded;
+		if (user.username != req.params.username){
+			res.json({
+				success: false,
+				message: "Unable to get the status of your garage!"
+			});
+		} else {
+			// Get the garage status from the DB
+			var status = {
+				success: true,
+				name: "My Garage",
+				status: "Open"
+			};
+			res.json(status);
+		}
 	});
 
 	app.use('/user',userRoutes);

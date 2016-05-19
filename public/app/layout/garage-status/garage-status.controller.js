@@ -3,9 +3,9 @@
 angular.module('my-app')
 .controller('GarageStatusController', GarageStatusController);
 
-GarageStatusController.$inject = ['AuthService'];
+GarageStatusController.$inject = ['AuthService','GarageFactory'];
 
-function GarageStatusController(AuthService) {
+function GarageStatusController(AuthService,GarageFactory) {
   
   var vm = this;
   
@@ -16,6 +16,21 @@ function GarageStatusController(AuthService) {
   vm.hideConfirm = hideConfirm;
   vm.navigateToLogin = navigateToLogin;
 
+  function getGarageStatus(){
+    GarageFactory.getStatus(vm.userSession.token,vm.userSession.user.username)
+    .success(function(data){
+      if (data.success){
+        vm.garageStatusMessage = "Your garage is " + data.status + "!";
+      } else {
+        vm.garageStatusMessage = data.message;
+      }
+    })
+    .error(function(data){
+      vm.garageStatusMessage = "Failed to find garage door status!";
+      console.log('Error: ' + data);
+    });
+  };
+  
   var confirmDialog;
 
   function showConfirm(){
@@ -41,6 +56,8 @@ function GarageStatusController(AuthService) {
     vm.userSession = AuthService.startUserSession();
     if (!vm.userSession.user){
       vm.showConfirm();
+    } else {
+      getGarageStatus();
     }
   });
   
