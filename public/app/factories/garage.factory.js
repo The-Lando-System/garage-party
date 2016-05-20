@@ -12,8 +12,8 @@ function GarageFactory($http) {
                 headers: { 'x-access-token': token }
             });
         },
-        getStatus : function(token, username) {
-            return $http.get('/user/garage/status/' + username, {
+        getStatus : function(token) {
+            return $http.get('/user/garage/status', {
             	headers: { 'x-access-token': token }
             });
         },

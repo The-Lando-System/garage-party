@@ -17,7 +17,7 @@ function GarageStatusController(AuthService,GarageFactory) {
   vm.navigateToLogin = navigateToLogin;
 
   function getGarageStatus(){
-    GarageFactory.getStatus(vm.userSession.token,vm.userSession.user.username)
+    GarageFactory.getStatus(vm.userSession.token)
     .success(function(data){
       if (data.success){
         vm.garageStatusMessage = "Your garage is " + data.status + "!";
