@@ -68,6 +68,7 @@ app.use(favicon(base + '/public/assets/images/favicon.ico'));
 require(base + '/server/routes/static-routes')(app);
 require(base + '/server/routes/admin-routes')(app);
 require(base + '/server/routes/user-routes')(app);
+require(base + '/server/routes/sensor-routes')(app);
 
 // User Authentication =================
 app.post('/authenticate', function(req,res){

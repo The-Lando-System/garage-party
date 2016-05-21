@@ -9,5 +9,6 @@ module.exports = mongoose.model('Garage', {
 	desiredStateChangeTime: { type: Date,    default: Date.now    },
 	desiredState:           { type: String,  default: 'Closed'    },
 	active:                 { type: Boolean, default: false       },
-	username:               { type: String,  default: ''          }
+	username:               { type: String,  default: ''          },
+  sensorId:               { type: String,  default: ''          }
 });

@@ -86,15 +86,16 @@ module.exports = function(app) {
 			}
 
 			Garage.create({
-				name: 					req.body.name,
-				description: 			req.body.description,
-				dateAdded: 				req.body.dateAdded,
-				actualState: 			req.body.actualState,
+				name: 									req.body.name,
+				description: 						req.body.description,
+				dateAdded: 							req.body.dateAdded,
+				actualState: 						req.body.actualState,
 				actualStateChangeTime: 	req.body.actualStateChangeTime,
 				desiredStateChangeTime: req.body.desiredStateChangeTime,
-				desiredState: 			req.body.desiredState,
-				active: 				req.body.active,
-				username: 				req.body.username 
+				desiredState: 					req.body.desiredState,
+				active: 								req.body.active,
+				username: 							req.body.username,
+				sensorId: 							req.body.sensorId 
 			}, function(err,garage){
 				if (err) {
 					res.send(err)

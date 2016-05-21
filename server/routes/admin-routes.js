@@ -89,7 +89,10 @@ module.exports = function(app) {
 	});
 	adminUserRoutes.put('/users/:id', function(req,res){
 		User.findById(req.params.id, function(err,user){
-			if (err) { res.send(err) };
+			if (err) {
+				res.send(err)
+				return;
+			};
 			var passwd = req.body.password.trim() === '' ? user.password : passwordHash.generate(req.body.password);
 			user.firstName = req.body.firstName || user.firstName;
 			user.lastName  = req.body.lastName  || user.lastName;
