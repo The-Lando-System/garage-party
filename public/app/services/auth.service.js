@@ -33,7 +33,7 @@ function AuthService($cookies,$location,jwtHelper,$rootScope) {
 
 	authService.logout = function(){
 		$cookies.remove('token');
-		$location.path('login');
+		$location.path('home');
 		$rootScope.$broadcast('logout', true);
 	};
 

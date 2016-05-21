@@ -1,26 +1,24 @@
-<jumbotron></jumbotron>
-
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--4-col"></div>
-  <div class="mdl-cell mdl-cell--4-col">
-    <form name="loginForm" ng-submit="vm.login(loginForm.$valid)" novalidate>
-      <div class="login-form-group" ng-class="{ 'has-error' : vm.authFail && !loginForm.password.$pristine && !loginForm.username.$pristine }">
+<dialog id="login-dialog" class="mdl-dialog">
+  <h3 class="mdl-dialog__title">Login</h3>
+  <div class="mdl-dialog__content">
+    <form name="loginForm" ng-submit="loginVm.login(loginForm.$valid)" novalidate>
+      <div class="login-form-group" ng-class="{ 'has-error' : loginVm.authFail && !loginForm.password.$pristine && !loginForm.username.$pristine }">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="username-id" type="text" name="username" class="mdl-textfield__input" ng-model="vm.creds.username" required>
+          <input id="username-id" type="text" name="username" class="mdl-textfield__input" ng-model="loginVm.creds.username" required>
           <label class="mdl-textfield__label" for="username-id">Username</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="password-id" type="password" name="password" class="mdl-textfield__input" ng-model="vm.creds.password" required>
+          <input id="password-id" type="password" name="password" class="mdl-textfield__input" ng-model="loginVm.creds.password" required>
           <label class="mdl-textfield__label" for="password-id">Password</label>
         </div>
       </div>
-      <div class="alert alert-danger" ng-show="vm.errorMessage">
-        <strong>Fail...</strong> {{ vm.errorMessage }}
+      <div class="alert alert-danger" ng-show="loginVm.errorMessage">
+        <strong>Fail...</strong> {{ loginVm.errorMessage }}
       </div>
       <button type="submit" ng-disabled="loginForm.$invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Login
       </button>
+      <button ng-click="loginVm.hideLoginDialog();" type="button" class="mdl-button">Cancel</button>
     </form>
   </div>
-  <div class="mdl-cell mdl-cell--4-col"></div>
-</div>
+</dialog>

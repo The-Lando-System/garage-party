@@ -3,7 +3,11 @@
   <div class="container">
     <h2>Welcome to the garage party!
     	<a ng-show="vm.userSession.user" ui-sref="garage-status">Find the status of your garage door.</a>
-    	<a ng-hide="vm.userSession.user" ui-sref="login">Please login.</a>
     </h2>
   </div>
+</div>
+<div class="row" ng-hide="vm.userSession.user">
+	<div class="container">
+		<button  ng-click="vm.showLoginDialog()" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Please Login!</button>
+	</div>
 </div>

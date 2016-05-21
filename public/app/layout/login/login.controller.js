@@ -7,22 +7,23 @@ LoginController.$inject = ['$http','$window','$location','jwtHelper','AuthServic
 
 function LoginController($http,$window,$location,jwtHelper,AuthService) {
 	
-	var vm = this;
+	var loginVm = this;
 
-	vm.headerMessage = "Login";
-	vm.authFail = false;
-	vm.login = login;
+	loginVm.authFail = false;
+	loginVm.login = login;
+	loginVm.hideLoginDialog = hideLoginDialog;
 
 	function login(formIsValid){
 		if (formIsValid){
-			$http.post('/authenticate',vm.creds)
+			$http.post('/authenticate',loginVm.creds)
 			.success(function(data){
 				if (data.success){
 					AuthService.createSession(data.token);
-					vm.userSession = AuthService.startUserSession();
+					loginVm.userSession = AuthService.startUserSession();
+					hideLoginDialog();
 				} else {
-					vm.authFail = true;
-					vm.errorMessage = data.message;
+					loginVm.authFail = true;
+					loginVm.errorMessage = data.message;
 				}
 			})
 			.error(function(data){
@@ -31,9 +32,18 @@ function LoginController($http,$window,$location,jwtHelper,AuthService) {
 		}
 	};
 
+	var loginDialog;
+
+	function hideLoginDialog(){
+		if(!loginDialog){
+  			loginDialog = document.querySelector('#login-dialog');
+  		}
+  		loginDialog.close();
+	};
+
 	angular.element(document).ready(function () {
-		vm.userSession = AuthService.startUserSession();
-		if (vm.userSession.user) {
+		loginVm.userSession = AuthService.startUserSession();
+		if (loginVm.userSession.user) {
 			$location.path('home');
 		}
 	});

@@ -8,12 +8,6 @@ function config($httpProvider,$urlRouterProvider,$stateProvider,$locationProvide
   $locationProvider.html5Mode(true);
 
   $stateProvider
-  .state('login', {
-    url: '/login',
-    templateUrl: '/app/layout/login/login.html',
-    controller: 'LoginController',
-    controllerAs: 'vm'
-  })
   .state('home', {
     url: '/home',
     templateUrl: '/app/layout/home/home.html',
@@ -34,7 +28,7 @@ function config($httpProvider,$urlRouterProvider,$stateProvider,$locationProvide
   })
 
   $urlRouterProvider
-  .otherwise('/login');
+  .otherwise('/home');
 
   $urlRouterProvider.rule(function($injector, $location) {
 

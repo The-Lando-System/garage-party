@@ -13,9 +13,6 @@ module.exports = function(app) {
 	staticRoutes.get('/', function(req,res){
 		res.sendFile(index);
 	});
-	staticRoutes.get('/login', function(req,res){
-		res.sendFile(index);
-	});
 	staticRoutes.get('/home', function(req,res){
 		res.sendFile(index);
 	});
@@ -41,6 +38,9 @@ module.exports = function(app) {
 	});
 	staticRoutes.get('/notification', function(req,res){
 		res.sendFile(base + '/public/app/directives/messages/notification.html');
+	});
+	staticRoutes.get('/login', function(req,res){
+		res.sendFile(base + '/public/app/layout/login/login.html');
 	});
 
 	app.use('/',staticRoutes);
