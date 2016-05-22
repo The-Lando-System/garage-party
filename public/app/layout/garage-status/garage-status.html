@@ -35,6 +35,43 @@
       
     </div>
   </div>
+
+
+   <div class="row" ng-show="vm.showDetails">
+    <div class="container">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="mdl-cell mdl-cell--6-col">
+
+          <div ng-show="vm.detailsErrorOrLoading">
+            <h4>{{vm.garageDetails}}</h4>
+          </div>
+
+          <div ng-hide="vm.detailsErrorOrLoading">
+            <ul class="demo-list-three mdl-list">
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <i class="material-icons mdl-list__item-avatar">person</i>
+                  <span>{{vm.garageDetails.name}}</span>
+                  <span class="mdl-list__item-text-body">
+                    {{vm.garageDetails.description}}
+                  </span>
+                </span>
+              </li>
+              <li class="mdl-list__item mdl-list__item--three-line">
+                <span class="mdl-list__item-primary-content">
+                  <span>You garage has been {{vm.openOrClosed}} since {{vm.garageDetails.actualStateChangeTime}} </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="mdl-cell mdl-cell--3-col"></div>
+    </div>
+  </div>
+
+
 </div>
 
 

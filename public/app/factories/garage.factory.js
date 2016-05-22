@@ -7,8 +7,8 @@ GarageFactory.$inject = ['$http'];
 
 function GarageFactory($http) {
 	return {
-        get : function(token, username) {
-            return $http.get('/user/garage/' + username, {
+        get : function(token) {
+            return $http.get('/user/garage', {
                 headers: { 'x-access-token': token }
             });
         },
