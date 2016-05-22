@@ -39,7 +39,7 @@ function AuthService($cookies,$location,jwtHelper,$rootScope) {
 
 	authService.createSession = function(token){
 		$cookies.put('token',token);
-		$location.path('home');
+		$location.path('garage-status');
 		$rootScope.$broadcast('login', true);
 	};
 

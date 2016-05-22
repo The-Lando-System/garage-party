@@ -1,13 +1,10 @@
 <jumbotron></jumbotron>
-<div class="row">
-  <div class="container">
-    <h2>Welcome to the garage party!
-    	<a ng-show="vm.userSession.user" ui-sref="garage-status">Find the status of your garage door.</a>
-    </h2>
-  </div>
-</div>
-<div class="row" ng-hide="vm.userSession.user">
-	<div class="container">
+<div class="container">
+	<div class="row">
+	    <h2>Welcome to the garage party!</h2>
+	    <h2><a ng-show="vm.userSession.user" ui-sref="garage-status">Find the status of your garage door.</a></h2>
+	</div>
+	<div class="row" ng-hide="vm.userSession.user">
 		<button  ng-click="vm.showLoginDialog()" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Please Login!</button>
 	</div>
 </div>

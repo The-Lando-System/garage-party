@@ -1,10 +1,46 @@
-<jumbotron></jumbotron>
-<div class="row">
-  <div class="container">
-    <h2>{{vm.garageStatusMessage}}</h2>
+<div class="garage-status-content">
+  <div class="row">
+    <div class="container">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--3-col"></div>
+        <div class="mdl-cell mdl-cell--6-col">
+          
+          <div class="garage-status-card mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+              <div ng-show="vm.loading">
+                <img src="/assets/images/garage-loading.gif" height="200" width="500">
+              </div>
+              <div ng-hide="vm.loading">
+                <div ng-show="vm.garageOpen">
+                  <img src="/assets/images/garage-open.jpg" height="200" width="500">
+                </div>
+                <div ng-hide="vm.garageOpen">
+                  <img src="/assets/images/garage-closed.jpg" height="200" width="500">
+                </div>
+              </div>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h4>{{vm.garageStatusMessage}}</h4>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <button ng-click="vm.viewGarageDetails()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                Garage Details
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="mdl-cell mdl-cell--3-col"></div>
+      
+    </div>
   </div>
 </div>
 
+
+
+
+<!-- Dialog in case you aren't logged in -->
 <dialog id="confirm-dialog-garage-status" class="mdl-dialog">
   <h3 class="mdl-dialog__title">You are not logged in!</h3>
   <div class="mdl-dialog__content">

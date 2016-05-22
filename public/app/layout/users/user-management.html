@@ -4,7 +4,7 @@
     <div class="mdl-cell mdl-cell--2-col"></div>
     <div class="mdl-cell mdl-cell--10-col">
       <div ng-show="vm.loading">
-        <img src="/assets/images/loading.gif" height="100" width="150">
+        <img src="/assets/images/garage-loading.gif" height="100" width="150">
       </div>
       <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" ng-hide="vm.loading">
         <thead>
@@ -51,9 +51,4 @@
 
 <confirm-dialog close-function="testHello()"></confirm-dialog>
 
-<!-- TODO move into a directive -->
-<!-- <div id="notification-snackbar" class="mdl-js-snackbar mdl-snackbar">
-  <div class="mdl-snackbar__text"></div>
-  <button class="mdl-snackbar__action" type="button"></button>
-</div> -->
 <notification></notification>

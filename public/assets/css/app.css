@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(247, 247, 247);
+}
+
 .row {
   margin-top: 10px;
 }
@@ -67,4 +71,22 @@
 
 #edit-user-dialog {
   width: 600px;
+}
+
+.garage-status-content {
+  margin-top: 80px;
+}
+
+.garage-status-card.mdl-card {
+  width: 500px;
+  height: 320px;
+}
+
+.garage-status-card > .mdl-card__title {
+  color: #fff;
+  background-color: #fff;
+}
+
+.mdl-card__actions {
+  margin-bottom: 10px;
 }

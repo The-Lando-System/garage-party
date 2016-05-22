@@ -41,12 +41,6 @@ function LoginController($http,$window,$location,jwtHelper,AuthService) {
   		loginDialog.close();
 	};
 
-	angular.element(document).ready(function () {
-		loginVm.userSession = AuthService.startUserSession();
-		if (loginVm.userSession.user) {
-			$location.path('home');
-		}
-	});
 };
 
 })();
