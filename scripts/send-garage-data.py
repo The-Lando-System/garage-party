@@ -23,10 +23,9 @@ def currentTime():
 
 # Given a single value of sound data, post it to the website
 def postToWebsite( data ):
-
-  state = "Closed";
-  if (data == 1):
-    state = "Open"
+  state = "Open";
+  if (data > 0):
+    state = "Closed"
   postData = {
     "actualState": state,
     "actualStateChangeTime": currentTime()
@@ -35,7 +34,7 @@ def postToWebsite( data ):
   headers = {'Content-type': 'application/json'}
 
   try:
-    r = requests.post(args.url,data=postData,headers=headers)
+    # r = requests.post(args.url,data=postData,headers=headers)
     print postData
   except requests.exceptions.RequestException as e:
     print e
@@ -57,12 +56,22 @@ def postProcess( dataArray ):
 
 def collectData(conn):
 
-  #data = conn.readline().rstrip().decode("utf-8")
-
+  data = conn.readline().rstrip().decode("utf-8")
+  #data = conn.readline()
   # For test
-  data = int(round(random.random()))
+  #data = int(round(random.random()))
+  #print data
 
   return data
+
+
+def processRawData(data):
+  #if ((data.isnumeric()) and (data != '-1')):
+  if ((data.isdigit()) and (data != '1')):
+    return data
+  else:
+    return 'N'  
+
 
 def testEndpoint():
   # Validate the given URL by sending a test POST
@@ -86,13 +95,14 @@ if (args.postFreq < args.collectFreq):
     args.postFreq = args.collectFreq
 postFreq = args.postFreq / args.collectFreq
 
-testEndpoint()
+# testEndpoint()
 
 # Listen for data on the serial port, process data at the given frequency
 ser = 0
 try:
   ser = 0
   #ser = serial.Serial('COM3',9600,timeout=0)
+  ser = serial.Serial('/dev/ttyACM0',9600,timeout=0)
   #ser.open()
 except Exception, e:
   print "Error opening the serial port: " + str(e)
@@ -101,8 +111,8 @@ except Exception, e:
 dataArray = []
 count = 0
 while True:
-  data = collectData(ser)
-  if data != '':
+  data = processRawData(collectData(ser))
+  if data != 'N':
     dataArray.append(int(data))
   else:
     dataArray.append(0)
