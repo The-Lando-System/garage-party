@@ -18,6 +18,7 @@ function GarageStatusController(AuthService,GarageFactory) {
 
   vm.garageDetails = 'Loading garage details...';
   vm.openOrClosed = '...';
+  vm.timeSinceLastStateChange = '';
   vm.detailsErrorOrLoading = true;
   vm.showDetails = false;
   vm.garageOpen = false;
@@ -31,6 +32,11 @@ function GarageStatusController(AuthService,GarageFactory) {
     GarageFactory.get(vm.userSession.token)
     .success(data => {
       vm.garageDetails = data[0];
+      var now = new Date();
+      console.log(now.getTimezoneOffset());
+      var tzOffset = now.getTimezoneOffset() * 60 * 1000;
+      vm.timeSinceLastStateChange = (now - tzOffset) - new Date(vm.garageDetails.actualStateChangeTime); 
+      vm.timeSinceLastStateChange = msToTime(vm.timeSinceLastStateChange);
       vm.detailsErrorOrLoading = false;
     })
     .error(data => {
@@ -80,6 +86,21 @@ function GarageStatusController(AuthService,GarageFactory) {
     AuthService.logout();
     vm.hideConfirm();
   };
+
+
+  function msToTime(ms) {
+    var x = ms / 1000;
+    var seconds = x % 60;
+    x /= 60;
+    var minutes = x % 60;
+    x /= 60;
+    var hours = x % 24;
+    x /= 24;
+    var days = x;
+
+    return parseInt(days) + " days, " + parseInt(hours) + " hours, " + parseInt(minutes) + " minutes, " + parseInt(seconds) + " seconds";
+  }
+
   
   angular.element(document).ready(function () {
     vm.userSession = AuthService.startUserSession();

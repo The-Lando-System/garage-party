@@ -60,7 +60,8 @@
               </li>
               <li class="mdl-list__item mdl-list__item--three-line">
                 <span class="mdl-list__item-primary-content">
-                  <span>You garage has been {{vm.openOrClosed}} since {{vm.garageDetails.actualStateChangeTime}} </span>
+                  <span>Your garage has been <strong>{{vm.openOrClosed}}</strong> for {{vm.timeSinceLastStateChange}}
+                  (since {{vm.garageDetails.actualStateChangeTime}})</span>
                 </span>
               </li>
             </ul>

@@ -30,6 +30,14 @@ module.exports = function(app) {
         return;
       }
 
+      if (garage[0].actualState === req.body.actualState){
+        res.send({
+          success: false,
+          message: "No state change detected."
+        });
+        return;
+      }
+
       garage[0].actualState            = req.body.actualState;
       garage[0].actualStateChangeTime  = req.body.actualStateChangeTime;
 
