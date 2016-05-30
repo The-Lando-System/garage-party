@@ -32,11 +32,14 @@ function GarageStatusController(AuthService,GarageFactory) {
     GarageFactory.get(vm.userSession.token)
     .success(data => {
       vm.garageDetails = data[0];
+
       var now = new Date();
-      console.log(now.getTimezoneOffset());
-      var tzOffset = now.getTimezoneOffset() * 60 * 1000;
-      vm.timeSinceLastStateChange = (now - tzOffset) - new Date(vm.garageDetails.actualStateChangeTime); 
-      vm.timeSinceLastStateChange = msToTime(vm.timeSinceLastStateChange);
+      var stateChangeDate = new Date(vm.garageDetails.actualStateChangeTime);
+
+      vm.timeSinceLastStateChange = msToTime(now - stateChangeDate);
+
+      vm.garageDetails.actualStateChangeTime = new Date(stateChangeDate - (stateChangeDate.getTimezoneOffset()*60*1000)); 
+
       vm.detailsErrorOrLoading = false;
     })
     .error(data => {
